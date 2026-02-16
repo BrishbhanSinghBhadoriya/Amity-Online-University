@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apply Now</title>
+  <style>
+    body{
+      font-family: Arial;
+      background:#f4f6fb;
+      padding:40px;
+      text-align:center;
+    }
+    .container{
+      max-width:450px;
+      margin:auto;
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+    img{
+      width:100%;
+      border-radius:10px;
+      margin-bottom:15px;
+    }
+    input,select{
+      width:100%;
+      padding:12px;
+      margin:8px 0;
+      border-radius:8px;
+      border:1px solid #ccc;
+    }
+    button{
+      width:100%;
+      padding:12px;
+      background:#25D366;
+      color:white;
+      border:none;
+      border-radius:8px;
+      font-size:16px;
+      margin-top:10px;
+      cursor:pointer;
+    }
+    #formBox{
+      display:none;
+      margin-top:15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <img src="https://res.cloudinary.com/didkrwhbu/image/upload/v1771220251/banner_ditua5.jpg">
+
+  <h2>Admission Open</h2>
+  <p>Click below to apply for admission.</p>
+
+  <!-- FIRST BUTTON -->
+  <button onclick="showForm()">Apply Now</button>
+
+  <!-- HIDDEN FORM -->
+  <div id="formBox">
+    <h3>Fill Details</h3>
+
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="phone" placeholder="Mobile Number">
+
+    <select id="course">
+      <option>Select Course</option>
+      <option>BCA</option>
+      <option>MBA</option>
+      <option>BBA</option>
+    </select>
+
+    <button onclick="sendWhatsApp()">Submit Application</button>
+  </div>
+
+</div>
+
+<script>
+
+function showForm(){
+  document.getElementById("formBox").style.display="block";
+}
+
+function sendWhatsApp(){
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let course=document.getElementById("course").value;
+
+  if(!name || !phone || !course){
+    alert("Please fill all details");
+    return;
+  }
+
+  let message=`Hello, I want to apply.
+Name: ${name}
+Phone: ${phone}
+Course: ${course}`;
+
+  let url="https://wa.me/919140901623?text="+encodeURIComponent(message);
+  window.open(url,"_blank");
+}
+
+</script>
+
+</body>
+</html>
